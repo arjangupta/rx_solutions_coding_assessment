@@ -4,3 +4,6 @@ Dependencies/setup:
 3. Execute: `conda activate rx_assessment`
 4. Execute: `conda install flask`
 5. Execute: `conda install gevent`
+
+Running the application:
+1. At the top level of this repository, execute: `flask run`
