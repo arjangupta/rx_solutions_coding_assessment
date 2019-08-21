@@ -9,6 +9,6 @@ def api_endpoint():
     return json
 
 if __name__ == '__main__':
-    print('Server is up and running')
     http_server = WSGIServer(('0.0.0.0', 5000), app)
+    print('Started server, begin serving forever')
     http_server.serve_forever()
