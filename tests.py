@@ -16,7 +16,7 @@ class AllTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json, json.loads(encoded_json))
 
-    def test_post_request_without_json(self):
+    def test_invalid_data_type(self):
         response = self.client.post('/api', data='Random text!')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode(), 'Error: request is not JSON')
