@@ -1,6 +1,7 @@
 from app import app
+from flask import request
 
 @app.route('/api', methods=['POST'])
 def sole_api_endpoint():
-    message = 'You successfully hit the endpoint'
+    message = request.json
     return message

@@ -3,7 +3,8 @@
 2. Execute in terminal: `conda create -n rx_assessment python=3.6`
 3. Execute: `conda activate rx_assessment`  
 4. Execute: `conda install flask`  
-5. Execute: `conda install -c conda-forge uwsgi`  
+5. Execute: `conda install -c conda-forge uwsgi`
+6. Execute: `conda install -c conda-forge flask-testing`  
 
 ### Running the application in development mode:
 At the top level of this repository, execute: 
