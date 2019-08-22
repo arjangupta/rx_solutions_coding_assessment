@@ -6,7 +6,9 @@
 5. Execute: `conda install -c conda-forge uwsgi`  
 
 ### Running the application in development mode:
-At the top level of this repository, execute: `flask run`
+At the top level of this repository, execute: 
+1. `export FLASK_APP=api.py`
+2. `flask run`
 
 ### Running the application in production mode:
 At the top level of this repository, execute: `uwsgi --http 127.0.0.1:5000 --module app:app`
