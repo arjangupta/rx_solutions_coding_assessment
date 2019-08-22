@@ -5,5 +5,5 @@ Dependencies/setup:
 4. Execute: `conda install flask`
 5. Execute: `conda install gevent`
 
-Running the application:
+Running the application in development mode:
 1. At the top level of this repository, execute: `flask run`
