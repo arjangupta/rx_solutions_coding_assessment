@@ -5,20 +5,18 @@
 2. Execute in terminal: `conda create -n rx_assessment python=3.6`
 3. Execute: `conda activate rx_assessment`  
 4. Execute: `conda install flask`  
-5. Execute: `conda install -c conda-forge uwsgi flask-testing flask-sqlalchemy flask-migrate` 
+5. Execute: `conda install -c conda-forge uwsgi flask-testing flask-sqlalchemy flask-migrate`  
+6. Execute: `export FLASK_APP=api.py` (for Windows CMD: `set FLASK_APP=api.py`, for Windows PowerShell: `$env:FLASK_APP = "api.py"`)
+
+### Database setup
+1. Apply migration changes to the database using: `flask db upgrade`
+2. Populate the table of pharmacies by running the script: `python populate_table_contents.py`  
 
 ### Running the application in development mode:
-At the top level of this repository, execute: 
-1. `export FLASK_APP=api.py` (for Windows CMD: `set FLASK_APP=api.py`, for Windows PowerShell: `$env:FLASK_APP = "api.py"`)
-2. `flask run`
+At the top level of this repository, execute: `flask run`
 
 ### Running the application in production mode:
 At the top level of this repository, execute: `uwsgi --http 127.0.0.1:5000 --module app:app`
 
 ### Testing the application
 At the top level of this repository, execute: `python tests.py`. This will run all the unit tests for this flask app.
-
-### Database information
-1. Creation of the database migration repository was done using: `flask db init`. The results was the migrations/ directory.
-2. The first database migration was generated using: `flask db migrate -m "Add the table of pharmacies"`
-3. Migration changes were applied to the database using: `flask db upgrade`
