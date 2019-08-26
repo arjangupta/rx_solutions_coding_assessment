@@ -13,11 +13,13 @@ class AllTests(TestCase):
     def test_expected_request(self):
         encoded_json = json.dumps({'latitude':45.674, 'longitude':100.234})
         response = self.client.post('/api', data=encoded_json, content_type='application/json')
+        
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, json.loads(encoded_json))
+        self.assertEqual(response.data.decode(), 'Nearest pharmacy is unknown')
 
     def test_invalid_data_type(self):
         response = self.client.post('/api', data='Random text!')
+        
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode(), 'Error: request is not JSON')
     
