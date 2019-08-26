@@ -2,6 +2,8 @@ import csv
 from app import db
 from app.models import Pharmacy
 
+
+
 def csv_to_db():
     with open('pharmacies.csv', 'r') as csv_file:
         pharmacy_records = csv.reader(csv_file)
