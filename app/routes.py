@@ -11,6 +11,6 @@ def sole_api_endpoint():
         if 'user_latitude' in json_dict and 'user_longitude' in json_dict:
             return 'Nearest pharmacy is unknown'
         else:
-            return 'Error: request does not not user\'s latitude and longitude'
+            return 'Error: request does not contain user\'s latitude and longitude', 400
     else:
-        return 'Error: request is not JSON'
+        return 'Error: request is not JSON', 400

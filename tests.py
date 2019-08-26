@@ -17,10 +17,31 @@ class AllTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode(), 'Nearest pharmacy is unknown')
 
+    def test_no_given_latitude(self):
+        encoded_json = json.dumps({'user_longitude':-6.55554})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: request does not contain user\'s latitude and longitude')
+
+    def test_no_given_longitude(self):
+        encoded_json = json.dumps({'user_latitude':-12312.55554})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: request does not contain user\'s latitude and longitude')
+
+    def irrelevant_json(self):
+        encoded_json = json.dumps({'foo':'bar'})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: request does not contain user\'s latitude and longitude')
+
     def test_invalid_data_type(self):
         response = self.client.post('/api', data='Random text!')
         
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 400)
         self.assertEqual(response.data.decode(), 'Error: request is not JSON')
     
     def test_invalid_request_method(self):
