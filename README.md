@@ -1,4 +1,4 @@
-## Documentation for Rx Savings Solutions Backend Developer Code Challenge
+## Rx Savings Solutions Backend Developer Code Challenge
 
 ### Dependencies/setup:  
 1. Download and setup [anaconda](https://www.anaconda.com/distribution/) (make sure to use Python 3 version)  
