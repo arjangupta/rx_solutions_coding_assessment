@@ -11,7 +11,7 @@ class AllTests(TestCase):
         return app
     
     def test_expected_request(self):
-        encoded_json = json.dumps({'latitude':45.674, 'longitude':100.234})
+        encoded_json = json.dumps({'user_latitude':45.674, 'user_longitude':100.234})
         response = self.client.post('/api', data=encoded_json, content_type='application/json')
         
         self.assertEqual(response.status_code, 200)
