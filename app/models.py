@@ -10,3 +10,6 @@ class Pharmacy(db.Model):
     zip = db.Column(db.String(64))
     latitude = db.Column(db.String(64))
     longitude = db.Column(db.String(64))
+
+    def __repr__(self):
+        return '<Pharmacy {}>'.format(self.pharmacy_name)
