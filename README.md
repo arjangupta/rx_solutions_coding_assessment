@@ -14,3 +14,6 @@ At the top level of this repository, execute:
 
 ### Running the application in production mode:
 At the top level of this repository, execute: `uwsgi --http 127.0.0.1:5000 --module app:app`
+
+### Testing the application
+At the top level of this repository, execute: `python tests.py`. This will run all the unit tests for this flask app.
