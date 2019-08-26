@@ -17,3 +17,8 @@ At the top level of this repository, execute: `uwsgi --http 127.0.0.1:5000 --mod
 
 ### Testing the application
 At the top level of this repository, execute: `python tests.py`. This will run all the unit tests for this flask app.
+
+### Database information
+1. Creation of the database migration repository was done using: `flask db init`. The results was the migrations/ directory.
+2. The first database migration was generated using: `flask db migrate -m "Add the table of pharmacies"`
+3. Migration changes were applied to the database using: `flask db upgrade`
