@@ -7,7 +7,7 @@ from flask import request
 @app.route('/api', methods=['POST'])
 def sole_api_endpoint():
     if request.is_json:
-        message = request.json
-        return message
+        json_message = request.json
+        return 'Nearest pharmacy is unknown'
     else:
         return 'Error: request is not JSON'
