@@ -3,11 +3,16 @@ from app.models import Pharmacy
 from flask import request
 import geopy.distance
 
-# Get list of pharmacies 
-pharmacies_by_latitude = Pharmacy.query.order_by(Pharmacy.latitude).all()
-
 # Utility function
 def find_closest_pharmacy(user_latitude, user_longitude):
+    # Get list of pharmacies 
+    pharmacies_by_latitude = \
+        Pharmacy.query.order_by(Pharmacy.latitude).all()
+    if pharmacies_by_latitude == []:
+        print('\n\n****** EMPTY DATABASE TABLE. Run: ' \
+              'python populate_table_contents.py *******\n\n')
+        return Pharmacy(), 0
+
     user_coordinate = (user_latitude, user_longitude)
     closest_pharmacy = pharmacies_by_latitude[0]
 
@@ -29,8 +34,6 @@ def find_closest_pharmacy(user_latitude, user_longitude):
 # user_latitude and user_longitude.
 @app.route('/api', methods=['POST'])
 def sole_api_endpoint():
-    global pharmacies_by_latitude
-
     if request.is_json:
         json_dict = request.json
 
