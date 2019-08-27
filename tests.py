@@ -21,6 +21,36 @@ class AllTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json, expected_response)
 
+    def test_latitude_out_of_range(self):
+        encoded_json = json.dumps({'user_latitude':239.185811, 'user_longitude':-95.463779})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: latitude out of range. Must be within ' \
+                                                 '[-90, 90]')
+
+        encoded_json = json.dumps({'user_latitude':-4575.676776, 'user_longitude':-95.463779})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: latitude out of range. Must be within ' \
+                                                 '[-90, 90]')
+
+    def test_longitude_out_of_range(self):
+        encoded_json = json.dumps({'user_latitude':-40.679, 'user_longitude':4759.999})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: longitude out of range. Must be within ' \
+                                                 '[-180, 180]')
+
+        encoded_json = json.dumps({'user_latitude':45.676776, 'user_longitude':-195.463779})
+        response = self.client.post('/api', data=encoded_json, content_type='application/json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.decode(), 'Error: longitude out of range. Must be within ' \
+                                                 '[-180, 180]')
+
     def test_no_given_latitude(self):
         encoded_json = json.dumps({'user_longitude':-6.55554})
         response = self.client.post('/api', data=encoded_json, content_type='application/json')
