@@ -9,10 +9,15 @@ pharmacies_by_latitude = Pharmacy.query.order_by(Pharmacy.latitude).all()
 # Utility function
 def find_closest_pharmacy(user_latitude, user_longitude):
     user_coordinate = (user_latitude, user_longitude)
-    for p in pharmacies_by_latitude:
+    closest_pharmacy = pharmacies_by_latitude[0]
+    minimum_displacement = geopy.distance.distance(user_coordinate, (closest_pharmacy.latitude, closest_pharmacy.longitude)).miles
+    for p in pharmacies_by_latitude[1:]:
         pharmacy_coordinate = (p.latitude, p.longitude)
         displacement = geopy.distance.distance(user_coordinate, pharmacy_coordinate).miles
-    return 0
+        if displacement < minimum_displacement:
+            minimum_displacement = displacement
+            closest_pharmacy = p
+    return closest_pharmacy
 
 # This end-point expects a request with
 # data type JSON that has only two keys, 
