@@ -5,7 +5,7 @@
 2. Execute in terminal: `conda create -n rx_assessment python=3.6`
 3. Execute: `conda activate rx_assessment`  
 4. Execute: `conda install flask`  
-5. Execute: `conda install -c conda-forge flask-testing flask-sqlalchemy flask-migrate`  
+5. Execute: `conda install -c conda-forge flask-testing flask-sqlalchemy flask-migrate geopy`  
 6. Execute: `export FLASK_APP=api.py` (for Windows CMD: `set FLASK_APP=api.py`, for Windows PowerShell: `$env:FLASK_APP = "api.py"`)
 
 ### Database setup
